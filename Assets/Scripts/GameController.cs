@@ -8,6 +8,7 @@ class GameController : MonoBehaviour {
 
 
     public GameObject reibranco = null;
+    public GameObject reipreto = null;
 
 
     PartidaDeXadrez partida;
@@ -15,6 +16,7 @@ class GameController : MonoBehaviour {
     void Start() {
         partida = new PartidaDeXadrez();
         Util.instanciarRei('e', 1, Cor.Branca, partida, reibranco);
+        Util.instanciarRei('e', 8, Cor.Preta, partida, reipreto);
 
-}
+    }
 }
