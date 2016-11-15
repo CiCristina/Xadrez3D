@@ -27,10 +27,17 @@ class GameController : MonoBehaviour {
     PosicaoXadrez origem, destino;
     Color corOriginal;
 
+
+    Vector3 posDescarteBrancas, posDescartePretas;
+
     void Start() {
         estado = Estado.AguardandoJogada;
         pecaEscolhida = null;
         corOriginal = txtMsg.color;
+
+        posDescarteBrancas = new Vector3(-1.2f, 0f, -1f);
+        posDescartePretas = new Vector3(1.2f, 0f, 1f);
+
 
         partida = new PartidaDeXadrez();
 
@@ -41,13 +48,10 @@ class GameController : MonoBehaviour {
         Util.instanciarRei('e', 1, Cor.Branca, partida, reibranco);
         Util.instanciarTorre('a', 1, Cor.Branca, partida, torreBranca);
         Util.instanciarTorre('h', 1, Cor.Branca, partida, torreBranca);
-        Util.instanciarTorre('d', 2, Cor.Branca, partida, torreBranca);
-        Util.instanciarTorre('e', 2, Cor.Branca, partida, torreBranca);
-        Util.instanciarTorre('f', 2, Cor.Branca, partida, torreBranca);
         Util.instanciarRei('e', 8, Cor.Preta, partida, reipreto);
         Util.instanciarTorre('a', 8, Cor.Preta, partida, torrePreta);
         Util.instanciarTorre('h', 8, Cor.Preta, partida, torrePreta);
-        Util.instanciarTorre('f', 2, Cor.Preta, partida, torrePreta);
+    
 
     }
 
@@ -91,7 +95,13 @@ class GameController : MonoBehaviour {
                         destino = new PosicaoXadrez(coluna, linha);
 
                         partida.validarPosicaoDeDestino(origem.toPosicao(), destino.toPosicao());
-                        partida.realizaJogada(origem.toPosicao(), destino.toPosicao());
+                        Peca pecaCapturada = partida.realizaJogada(origem.toPosicao(), destino.toPosicao());
+
+                        if (pecaCapturada != null)
+                        {
+                            removerObjetoCapturado(pecaCapturada);
+                        }
+
 
                         peca.transform.position = Util.posicaoNaCena(coluna, linha);
 
@@ -136,4 +146,17 @@ void informarAguardando()
     txtMsg.color = corOriginal;
     txtMsg.text = "Aguardando jogada:" + partida.jogadorAtual;
 }
+    void removerObjetoCapturado(Peca peca)
+    {
+        GameObject obj = peca.obj;
+        if (peca.cor == Cor.Branca)
+        {
+            obj.transform.position = posDescarteBrancas;
+            posDescarteBrancas.z= posDescarteBrancas.z + 0.2f;
+        }
+        else {
+            obj.transform.position = posDescartePretas;
+            posDescartePretas.z = posDescartePretas.z - 0.2f;
+        }
+    }
 }
