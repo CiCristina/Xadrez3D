@@ -224,5 +224,15 @@ void informarAguardando()
 
 
         }
+
+        //jogadaespecial promocao
+        if (partida.promovida != null)
+        {
+            removerObjetoCapturado(partida.promovida);
+            Vector3 posPromovida = Util.posicaoNaCena(destino.coluna, destino.linha);
+            GameObject prefab = (pecaMovida.cor == Cor.Branca) ? damaBranca : damaPreta;
+            GameObject dama = Instantiate(prefab, posPromovida, Quaternion.identity) as GameObject;
+            pecaMovida.obj = dama;
+        }
     }
 }
