@@ -13,6 +13,14 @@ class Util : MonoBehaviour {
         partida.colocarNovaPeca(coluna, linha, peca);
         rei.GetComponent<ReferenciaPeca>().peca = peca;
 }
+    public static void instanciarDama(char coluna, int linha, Cor cor, PartidaDeXadrez partida, GameObject prefab)
+    {
+        Vector3 pos = posicaoNaCena(coluna, linha);
+        GameObject dama = Instantiate(prefab, pos, Quaternion.identity) as GameObject;
+        Peca peca = new Dama(partida.tab, cor, partida, dama);
+        partida.colocarNovaPeca(coluna, linha, peca);
+        dama.GetComponent<ReferenciaPeca>().peca = peca;
+    }
 
     public static void instanciarTorre(char coluna, int linha, Cor cor, PartidaDeXadrez partida, GameObject prefab)
     {
@@ -22,6 +30,32 @@ class Util : MonoBehaviour {
         partida.colocarNovaPeca(coluna, linha, peca);
         torre.GetComponent<ReferenciaPeca>().peca = peca;
     }
+
+    public static void instanciarCavalo(char coluna, int linha, Cor cor, PartidaDeXadrez partida, GameObject prefab)
+    {
+        Vector3 pos = posicaoNaCena(coluna, linha);
+        GameObject cavalo = Instantiate(prefab, pos, Quaternion.identity) as GameObject;
+        Peca peca = new Cavalo(partida.tab, cor, cavalo);
+        partida.colocarNovaPeca(coluna, linha, peca);
+        cavalo.GetComponent<ReferenciaPeca>().peca = peca;
+    }
+    public static void instanciarBispo(char coluna, int linha, Cor cor, PartidaDeXadrez partida, GameObject prefab)
+    {
+        Vector3 pos = posicaoNaCena(coluna, linha);
+        GameObject bispo = Instantiate(prefab, pos, Quaternion.identity) as GameObject;
+        Peca peca = new Bispo(partida.tab, cor, bispo);
+        partida.colocarNovaPeca(coluna, linha, peca);
+        bispo.GetComponent<ReferenciaPeca>().peca = peca;
+    }
+    public static void instanciarPeao(char coluna, int linha, Cor cor, PartidaDeXadrez partida, GameObject prefab)
+    {
+        Vector3 pos = posicaoNaCena(coluna, linha);
+        GameObject peao = Instantiate(prefab, pos, Quaternion.identity) as GameObject;
+        Peca peca = new Peao(partida.tab, cor, partida, peao);
+        partida.colocarNovaPeca(coluna, linha, peca);
+        peao.GetComponent<ReferenciaPeca>().peca = peca;
+    }
+
 
 
     public static Vector3 posicaoNaCena (char coluna, int linha)
