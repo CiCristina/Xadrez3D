@@ -17,12 +17,12 @@ public class Movimentacao : MonoBehaviour {
         casa = null;
 
 
-        chaoMask = LayerMask.GetMask("Chao");
+        chaoMask = LayerMask.GetMask("chao");
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Casas"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("casas"))
         {
             colidindo = true;
             casa = other.gameObject;
