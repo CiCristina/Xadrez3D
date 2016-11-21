@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: e3eeca6057aca664294cfea8ab612dde
+timeCreated: 1479730237
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Handle_lp
+    100004: HandleHolder_lp
+    100006: HeadM
+    100008: JNTG
+    100010: Leather_lp
+    100012: MeshG
+    100014: PoleM
+    100016: Root_JNT
+    100018: Root_JNT_end
+    100020: Shield_lp
+    100022: ShieldGRP
+    100024: Spike_lp
+    100026: Springer
+    100028: Springerfod
+    100030: TipM
+    100032: VRayLight001
+    100034: VRayLight005
+    100036: Wing1M
+    100038: Wing2M
+    100040: Wing3M
+    400000: //RootNode
+    400002: Handle_lp
+    400004: HandleHolder_lp
+    400006: HeadM
+    400008: JNTG
+    400010: Leather_lp
+    400012: MeshG
+    400014: PoleM
+    400016: Root_JNT
+    400018: Root_JNT_end
+    400020: Shield_lp
+    400022: ShieldGRP
+    400024: Spike_lp
+    400026: Springer
+    400028: Springerfod
+    400030: TipM
+    400032: VRayLight001
+    400034: VRayLight005
+    400036: Wing1M
+    400038: Wing2M
+    400040: Wing3M
+    2300000: Handle_lp
+    2300002: HandleHolder_lp
+    2300004: Leather_lp
+    2300006: Shield_lp
+    2300008: Spike_lp
+    2300010: Springer
+    2300012: Springerfod
+    3300000: Handle_lp
+    3300002: HandleHolder_lp
+    3300004: Leather_lp
+    3300006: Shield_lp
+    3300008: Spike_lp
+    3300010: Springer
+    3300012: Springerfod
+    4300000: Shield_lp
+    4300002: Spike_lp
+    4300004: Leather_lp
+    4300006: HandleHolder_lp
+    4300008: Handle_lp
+    4300010: Springerfod
+    4300012: Springer
+    4300014: Wing3M
+    4300016: HeadM
+    4300018: PoleM
+    4300020: Wing2M
+    4300022: TipM
+    4300024: Wing1M
+    9500000: //RootNode
+    13700000: HeadM
+    13700002: PoleM
+    13700004: TipM
+    13700006: Wing1M
+    13700008: Wing2M
+    13700010: Wing3M
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -54,13 +54,11 @@ class GameController : MonoBehaviour {
         txtXeque.text = "";
        informarAguardando();
 
-        Util.instanciarRei('e', 1, Cor.Branca, partida, reibranco);
-        Util.instanciarRei('e', 8, Cor.Preta, partida, reipreto);
-/*
         Util.instanciarTorre('a', 1, Cor.Branca, partida, torreBranca);
         Util.instanciarCavalo('b', 1, Cor.Branca, partida, cavaloBranco);
         Util.instanciarBispo('c', 1, Cor.Branca, partida, bispoBranco);
         Util.instanciarDama('d', 1, Cor.Branca, partida, damaBranca);
+        Util.instanciarRei('e', 1, Cor.Branca, partida, reibranco);
         Util.instanciarBispo('f', 1, Cor.Branca, partida, bispoBranco);
         Util.instanciarCavalo('g', 1, Cor.Branca, partida, cavaloBranco);
         Util.instanciarTorre('h', 1, Cor.Branca, partida, torreBranca);
@@ -77,6 +75,7 @@ class GameController : MonoBehaviour {
         Util.instanciarTorre('a', 8, Cor.Preta, partida, torrePreta);
         Util.instanciarCavalo('b', 8, Cor.Preta, partida, cavaloPreto);
         Util.instanciarBispo('c', 8, Cor.Preta, partida, bispoPreto);
+        Util.instanciarRei('e', 8, Cor.Preta, partida, reipreto);
         Util.instanciarDama('d', 8, Cor.Preta, partida, damaPreta);
         Util.instanciarBispo('f', 8, Cor.Preta, partida, bispoPreto);
         Util.instanciarCavalo('g', 8, Cor.Preta, partida, cavaloPreto);
@@ -89,7 +88,6 @@ class GameController : MonoBehaviour {
         Util.instanciarPeao('f',7, Cor.Preta, partida, peaoPreto);
         Util.instanciarPeao('g', 7, Cor.Preta, partida, peaoPreto);
         Util.instanciarPeao('h', 7, Cor.Preta, partida, peaoPreto);
-*/
     }
 
     public void processarMouseDown(GameObject peca, GameObject casa)
@@ -178,7 +176,7 @@ void informarAviso(string msg)
 {
     txtMsg.color = Color.red;
     txtMsg.text = msg;
-    Invoke("InformarAguardando", 1f);
+    Invoke("informarAguardando", 1f);
 }
 
 void informarAguardando()
