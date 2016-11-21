@@ -17,7 +17,7 @@ class Util : MonoBehaviour {
     {
         Vector3 pos = posicaoNaCena(coluna, linha);
         GameObject dama = Instantiate(prefab, pos, Quaternion.identity) as GameObject;
-        Peca peca = new Dama(partida.tab, cor, partida, dama);
+        Peca peca = new Dama(partida.tab, cor, dama);
         partida.colocarNovaPeca(coluna, linha, peca);
         dama.GetComponent<ReferenciaPeca>().peca = peca;
     }
