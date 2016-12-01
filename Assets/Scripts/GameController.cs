@@ -45,14 +45,14 @@ class GameController : MonoBehaviour {
         pecaEscolhida = null;
         corOriginal = txtMsg.color;
 
-        posDescarteBrancas = new Vector3(-1.2f, 0f, -1f);
-        posDescartePretas = new Vector3(1.2f, 0f, 1f);
+        posDescarteBrancas = new Vector3(-15f, 0f, -10f);
+        posDescartePretas = new Vector3(15f, 0f, 10f);
 
 
         partida = new PartidaDeXadrez();
 
         txtXeque.text = "";
-       informarAguardando();
+        informarAguardando();
 
         Util.instanciarTorre('a', 1, Cor.Branca, partida, torreBranca);
         Util.instanciarCavalo('b', 1, Cor.Branca, partida, cavaloBranco);
@@ -85,19 +85,15 @@ class GameController : MonoBehaviour {
         Util.instanciarPeao('c', 7, Cor.Preta, partida, peaoPreto);
         Util.instanciarPeao('d', 7, Cor.Preta, partida, peaoPreto);
         Util.instanciarPeao('e', 7, Cor.Preta, partida, peaoPreto);
-        Util.instanciarPeao('f',7, Cor.Preta, partida, peaoPreto);
+        Util.instanciarPeao('f', 7, Cor.Preta, partida, peaoPreto);
         Util.instanciarPeao('g', 7, Cor.Preta, partida, peaoPreto);
         Util.instanciarPeao('h', 7, Cor.Preta, partida, peaoPreto);
     }
 
-    public void processarMouseDown(GameObject peca, GameObject casa)
-    {
-        if (estado == Estado.AguardandoJogada)
-        {
-            if (casa != null)
-            {
-                try
-                {
+    public void processarMouseDown(GameObject peca, GameObject casa) {
+        if (estado == Estado.AguardandoJogada) {
+            if (casa != null) {
+                try {
                     char coluna = casa.name[0];
                     int linha = casa.name[1] - '0';
                     origem = new PosicaoXadrez(coluna, linha);
@@ -106,8 +102,7 @@ class GameController : MonoBehaviour {
                     estado = Estado.Arrastando;
                     txtMsg.text = "Solte a peça na casa de destino";
                 }
-                catch (TabuleiroException e)
-                {
+                catch (TabuleiroException e) {
                     informarAviso(e.Message);
                 }
 
@@ -115,16 +110,11 @@ class GameController : MonoBehaviour {
 
         }
     }
-    public void processarMouseUp(GameObject peca, GameObject casa)
-    {
-    if (estado == Estado.Arrastando)
-        {
-            if (casa != null)
-            {
-                if (pecaEscolhida != null && pecaEscolhida == peca)
-                {
-                    try
-                    {
+    public void processarMouseUp(GameObject peca, GameObject casa) {
+        if (estado == Estado.Arrastando) {
+            if (casa != null) {
+                if (pecaEscolhida != null && pecaEscolhida == peca) {
+                    try {
                         char coluna = casa.name[0];
                         int linha = casa.name[1] - '0';
                         destino = new PosicaoXadrez(coluna, linha);
@@ -132,8 +122,7 @@ class GameController : MonoBehaviour {
                         partida.validarPosicaoDeDestino(origem.toPosicao(), destino.toPosicao());
                         Peca pecaCapturada = partida.realizaJogada(origem.toPosicao(), destino.toPosicao());
 
-                        if (pecaCapturada != null)
-                        {
+                        if (pecaCapturada != null) {
                             removerObjetoCapturado(pecaCapturada);
                         }
 
@@ -146,14 +135,12 @@ class GameController : MonoBehaviour {
                         pecaEscolhida = null;
 
 
-                        if (partida.terminada)
-                        {
+                        if (partida.terminada) {
                             estado = Estado.GameOver;
                             txtMsg.text = "Vencedor: " + partida.jogadorAtual;
                             txtXeque.text = "XEQUEMATE";
                         }
-                        else
-                        {
+                        else {
                             estado = Estado.AguardandoJogada;
                             informarAguardando();
                             estado = Estado.AguardandoJogada;
@@ -161,10 +148,10 @@ class GameController : MonoBehaviour {
                             txtXeque.text = (partida.xeque) ? "XEQUE" : "";
                         }
                     }
-                    catch (TabuleiroException e){
+                    catch (TabuleiroException e) {
                         peca.transform.position = Util.posicaoNaCena(origem.coluna, origem.linha);
                         estado = Estado.AguardandoJogada;
-                        informarAviso(e.Message); 
+                        informarAviso(e.Message);
                     }
                 }
             }
@@ -172,41 +159,35 @@ class GameController : MonoBehaviour {
         }
     }
 
-void informarAviso(string msg)
-{
-    txtMsg.color = Color.red;
-    txtMsg.text = msg;
-    Invoke("informarAguardando", 1f);
-}
+    void informarAviso(string msg) {
+        txtMsg.color = Color.red;
+        txtMsg.text = msg;
+        Invoke("informarAguardando", 1f);
+    }
 
-void informarAguardando()
-{
-    txtMsg.color = corOriginal;
-    txtMsg.text = "Aguardando jogada:" + partida.jogadorAtual;
-}
-    void removerObjetoCapturado(Peca peca)
-    {
+    void informarAguardando() {
+        txtMsg.color = corOriginal;
+        txtMsg.text = "Aguardando jogada:" + partida.jogadorAtual;
+    }
+    void removerObjetoCapturado(Peca peca) {
         GameObject obj = peca.obj;
-        if (peca.cor == Cor.Branca)
-        {
+        if (peca.cor == Cor.Branca) {
             obj.transform.position = posDescarteBrancas;
-            posDescarteBrancas.z= posDescarteBrancas.z + 0.2f;
+            posDescarteBrancas.z = posDescarteBrancas.z + 1.3f;
         }
         else {
             obj.transform.position = posDescartePretas;
-            posDescartePretas.z = posDescartePretas.z - 0.2f;
+            posDescartePretas.z = posDescartePretas.z - 1.3f;
         }
     }
 
-    void tratarJogadasEspeciais()
-    {
+    void tratarJogadasEspeciais() {
         Posicao pos = destino.toPosicao();
         Peca pecaMovida = partida.tab.peca(pos);
 
-//#jogadaespecial roque pequeno
+        //#jogadaespecial roque pequeno
 
-        if (pecaMovida is Rei && destino.coluna == origem.coluna + 2)
-        {
+        if (pecaMovida is Rei && destino.coluna == origem.coluna + 2) {
             GameObject torre = partida.tab.peca(pos.linha, pos.coluna - 1).obj;
             torre.transform.position = Util.posicaoNaCena('f', origem.linha);
 
@@ -215,8 +196,7 @@ void informarAguardando()
 
         //#jogadaespecial roque grande
 
-        if (pecaMovida is Rei && destino.coluna == origem.coluna - 2)
-        {
+        if (pecaMovida is Rei && destino.coluna == origem.coluna - 2) {
             GameObject torre = partida.tab.peca(pos.linha, pos.coluna + 1).obj;
             torre.transform.position = Util.posicaoNaCena('d', origem.linha);
 
@@ -224,8 +204,7 @@ void informarAguardando()
         }
 
         //jogadaespecial promocao
-        if (partida.promovida != null)
-        {
+        if (partida.promovida != null) {
             removerObjetoCapturado(partida.promovida);
             Vector3 posPromovida = Util.posicaoNaCena(destino.coluna, destino.linha);
             GameObject prefab = (pecaMovida.cor == Cor.Branca) ? damaBranca : damaPreta;
