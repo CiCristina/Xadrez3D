@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class CameraRotacao : MonoBehaviour {
 
     public float velocidadeAngular = 180f;
@@ -10,8 +9,7 @@ public class CameraRotacao : MonoBehaviour {
 
     bool indoParaBranca, indoParaPreta;
 
-	void Start () {
-
+    void Start() {
         indoParaBranca = false;
         indoParaPreta = false;
 
@@ -24,46 +22,33 @@ public class CameraRotacao : MonoBehaviour {
         rotPreta = Quaternion.Euler(angulos.x, angulos.y + 180f, angulos.z);
     }
 
-    
-    void Update () {
-    if (indoParaBranca)
-        {
-            if (Vector3.Distance(transform.position, posBranca) > 5f)
-            {
+    void Update() {
+        if (indoParaBranca) {
+            if (Vector3.Distance(transform.position, posBranca) > 5f) {
                 transform.RotateAround(Vector3.zero, Vector3.up, velocidadeAngular * Time.deltaTime);
             }
-
-            else
-            {
+            else {
                 transform.position = posBranca;
                 transform.rotation = rotBranca;
                 indoParaBranca = false;
             }
         }
-        if (indoParaPreta)
-        {
-            if (Vector3.Distance(transform.position, posPreta) > 5f)
-            {
+
+        if (indoParaPreta) {
+            if (Vector3.Distance(transform.position, posPreta) > 5f) {
                 transform.RotateAround(Vector3.zero, Vector3.up, velocidadeAngular * Time.deltaTime);
             }
-
-            else
-            {
+            else {
                 transform.position = posPreta;
                 transform.rotation = rotPreta;
                 indoParaPreta = false;
             }
         }
-
     }
-
-    public void irParaBranca()
-    {
+    public void irParaBranca() {
         indoParaBranca = true;
     }
-
-    public void irParaPreta()
-    {
+    public void irParaPreta() {
         indoParaPreta = true;
     }
 }

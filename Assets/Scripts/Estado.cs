@@ -1,5 +1,4 @@
-﻿enum Estado
-{
+﻿enum Estado {
     AguardandoJogada,
     Arrastando,
     GameOver

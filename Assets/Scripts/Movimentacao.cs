@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class Movimentacao : MonoBehaviour {
 
     GameController gameController;
@@ -8,43 +7,27 @@ public class Movimentacao : MonoBehaviour {
     bool colidindo;
     GameObject casa;
 
-  
-
     void Awake() {
-
         gameController = FindObjectOfType(typeof(GameController)) as GameController;
         colidindo = false;
         casa = null;
-
-
-        
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("casas"))
-        {
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Casas")) {
             colidindo = true;
             casa = other.gameObject;
         }
     }
-    void OnTriggerExit(Collider other)
-    {
-        if (colidindo && other.gameObject == casa)
-        {
+
+    void OnTriggerExit(Collider other) {
+        if (colidindo && other.gameObject == casa) {
             colidindo = false;
             casa = null;
         }
     }
 
-
-    void OnMouseDown()
-    {
+    void OnMouseDown() {
         gameController.processarMouseDown(transform.gameObject, casa);
     }
-
-  
-
-  
 }
-         
